@@ -87,6 +87,17 @@ border-color: #10B981;
 .toggle-checkbox:checked + .toggle-label {
 background-color: #10B981;
 }
+/* Color Radio */
+.color-radio:checked + div {
+transform: scale(1.1);
+box-shadow: 0 0 0 2px white, 0 0 0 4px currentColor;
+}
+/* Icon Radio */
+.icon-radio:checked + div {
+background-color: #ECFDF5;
+border-color: #10B981;
+color: #059669;
+}
 </style></head>
 <body class="bg-gray-50 min-h-screen w-full font-sans antialiased text-gray-900 flex overflow-hidden">
 
@@ -181,7 +192,7 @@ background-color: #10B981;
                     </div>
                 </div>
                 
-                <button class="flex items-center justify-center gap-2 px-4 py-2.5 bg-emerald-600 text-white rounded-btn hover:bg-emerald-700 font-medium text-sm transition-all shadow-sm shadow-emerald-200">
+                <button onclick="toggleDrawer()" class="flex items-center justify-center gap-2 px-4 py-2.5 bg-emerald-600 text-white rounded-btn hover:bg-emerald-700 font-medium text-sm transition-all shadow-sm shadow-emerald-200">
                     <span class="iconify" data-icon="lucide:plus" data-width="18"></span>
                     Add Category
                 </button>
@@ -256,18 +267,18 @@ background-color: #10B981;
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                 <!-- 1. Food & Dining -->
-                <div class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <div onclick="window.location.href='./17a-category-detail.html?cat=food-dining'" class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden cursor-pointer">
                     <div class="absolute top-0 inset-x-0 h-1 bg-orange-500"></div>
                     <div class="p-5">
                         <div class="flex items-start justify-between mb-4">
                             <div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center border border-orange-100">
                                 <span class="iconify" data-icon="lucide:utensils" data-width="24"></span>
                             </div>
-                            <button class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
+                            <button onclick="event.stopPropagation()" class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
                                 <span class="iconify" data-icon="lucide:more-vertical" data-width="20"></span>
                             </button>
                         </div>
-                        
+
                         <div class="mb-4">
                             <div class="flex items-center gap-2 mb-1">
                                 <h3 class="text-lg font-bold text-gray-900 tracking-tight">Food &amp; Dining</h3>
@@ -277,13 +288,13 @@ background-color: #10B981;
                         </div>
 
                         <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                            <label class="relative inline-flex items-center cursor-pointer">
+                            <label onclick="event.stopPropagation()" class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" checked="">
                                 <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
                                 <span class="ml-2 text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">Active</span>
                             </label>
-                            
-                            <div class="flex gap-1">
+
+                            <div class="flex gap-1" onclick="event.stopPropagation()">
                                 <button class="p-1.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded transition-colors">
                                     <span class="iconify" data-icon="lucide:pencil" data-width="16"></span>
                                 </button>
@@ -296,18 +307,18 @@ background-color: #10B981;
                 </div>
 
                 <!-- 2. Shopping -->
-                <div class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <div onclick="window.location.href='./17a-category-detail.html?cat=shopping'" class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden cursor-pointer">
                     <div class="absolute top-0 inset-x-0 h-1 bg-purple-500"></div>
                     <div class="p-5">
                         <div class="flex items-start justify-between mb-4">
                             <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center border border-purple-100">
                                 <span class="iconify" data-icon="lucide:shopping-bag" data-width="24"></span>
                             </div>
-                            <button class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
+                            <button onclick="event.stopPropagation()" class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
                                 <span class="iconify" data-icon="lucide:more-vertical" data-width="20"></span>
                             </button>
                         </div>
-                        
+
                         <div class="mb-4">
                             <div class="flex items-center gap-2 mb-1">
                                 <h3 class="text-lg font-bold text-gray-900 tracking-tight">Shopping</h3>
@@ -317,12 +328,12 @@ background-color: #10B981;
                         </div>
 
                         <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                            <label class="relative inline-flex items-center cursor-pointer">
+                            <label onclick="event.stopPropagation()" class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" checked="">
                                 <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
                                 <span class="ml-2 text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">Active</span>
                             </label>
-                            <div class="flex gap-1">
+                            <div class="flex gap-1" onclick="event.stopPropagation()">
                                 <button class="p-1.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded transition-colors">
                                     <span class="iconify" data-icon="lucide:pencil" data-width="16"></span>
                                 </button>
@@ -335,18 +346,18 @@ background-color: #10B981;
                 </div>
 
                 <!-- 3. Transportation -->
-                <div class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <div onclick="window.location.href='./17a-category-detail.html?cat=transportation'" class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden cursor-pointer">
                     <div class="absolute top-0 inset-x-0 h-1 bg-blue-500"></div>
                     <div class="p-5">
                         <div class="flex items-start justify-between mb-4">
                             <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
                                 <span class="iconify" data-icon="lucide:car-front" data-width="24"></span>
                             </div>
-                            <button class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
+                            <button onclick="event.stopPropagation()" class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
                                 <span class="iconify" data-icon="lucide:more-vertical" data-width="20"></span>
                             </button>
                         </div>
-                        
+
                         <div class="mb-4">
                             <div class="flex items-center gap-2 mb-1">
                                 <h3 class="text-lg font-bold text-gray-900 tracking-tight">Transportation</h3>
@@ -356,12 +367,12 @@ background-color: #10B981;
                         </div>
 
                         <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                            <label class="relative inline-flex items-center cursor-pointer">
+                            <label onclick="event.stopPropagation()" class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" checked="">
                                 <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
                                 <span class="ml-2 text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">Active</span>
                             </label>
-                            <div class="flex gap-1">
+                            <div class="flex gap-1" onclick="event.stopPropagation()">
                                 <button class="p-1.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded transition-colors">
                                     <span class="iconify" data-icon="lucide:pencil" data-width="16"></span>
                                 </button>
@@ -374,18 +385,18 @@ background-color: #10B981;
                 </div>
 
                 <!-- 4. Bills & Utilities -->
-                <div class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <div onclick="window.location.href='./17a-category-detail.html?cat=bills-utilities'" class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden cursor-pointer">
                     <div class="absolute top-0 inset-x-0 h-1 bg-red-500"></div>
                     <div class="p-5">
                         <div class="flex items-start justify-between mb-4">
                             <div class="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center border border-red-100">
                                 <span class="iconify" data-icon="lucide:receipt" data-width="24"></span>
                             </div>
-                            <button class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
+                            <button onclick="event.stopPropagation()" class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
                                 <span class="iconify" data-icon="lucide:more-vertical" data-width="20"></span>
                             </button>
                         </div>
-                        
+
                         <div class="mb-4">
                             <div class="flex items-center gap-2 mb-1">
                                 <h3 class="text-lg font-bold text-gray-900 tracking-tight">Bills &amp; Utilities</h3>
@@ -395,12 +406,12 @@ background-color: #10B981;
                         </div>
 
                         <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                            <label class="relative inline-flex items-center cursor-pointer">
+                            <label onclick="event.stopPropagation()" class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" checked="">
                                 <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
                                 <span class="ml-2 text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">Active</span>
                             </label>
-                            <div class="flex gap-1">
+                            <div class="flex gap-1" onclick="event.stopPropagation()">
                                 <button class="p-1.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded transition-colors">
                                     <span class="iconify" data-icon="lucide:pencil" data-width="16"></span>
                                 </button>
@@ -413,18 +424,18 @@ background-color: #10B981;
                 </div>
 
                 <!-- 5. Entertainment -->
-                <div class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <div onclick="window.location.href='./17a-category-detail.html?cat=entertainment'" class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden cursor-pointer">
                     <div class="absolute top-0 inset-x-0 h-1 bg-pink-500"></div>
                     <div class="p-5">
                         <div class="flex items-start justify-between mb-4">
                             <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center border border-pink-100">
                                 <span class="iconify" data-icon="lucide:tv" data-width="24"></span>
                             </div>
-                            <button class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
+                            <button onclick="event.stopPropagation()" class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
                                 <span class="iconify" data-icon="lucide:more-vertical" data-width="20"></span>
                             </button>
                         </div>
-                        
+
                         <div class="mb-4">
                             <div class="flex items-center gap-2 mb-1">
                                 <h3 class="text-lg font-bold text-gray-900 tracking-tight">Entertainment</h3>
@@ -434,12 +445,12 @@ background-color: #10B981;
                         </div>
 
                         <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                            <label class="relative inline-flex items-center cursor-pointer">
+                            <label onclick="event.stopPropagation()" class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" checked="">
                                 <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
                                 <span class="ml-2 text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">Active</span>
                             </label>
-                            <div class="flex gap-1">
+                            <div class="flex gap-1" onclick="event.stopPropagation()">
                                 <button class="p-1.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded transition-colors">
                                     <span class="iconify" data-icon="lucide:pencil" data-width="16"></span>
                                 </button>
@@ -452,18 +463,18 @@ background-color: #10B981;
                 </div>
 
                 <!-- 6. Healthcare -->
-                <div class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <div onclick="window.location.href='./17a-category-detail.html?cat=healthcare'" class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden cursor-pointer">
                     <div class="absolute top-0 inset-x-0 h-1 bg-green-500"></div>
                     <div class="p-5">
                         <div class="flex items-start justify-between mb-4">
                             <div class="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center border border-green-100">
                                 <span class="iconify" data-icon="lucide:heart-pulse" data-width="24"></span>
                             </div>
-                            <button class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
+                            <button onclick="event.stopPropagation()" class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
                                 <span class="iconify" data-icon="lucide:more-vertical" data-width="20"></span>
                             </button>
                         </div>
-                        
+
                         <div class="mb-4">
                             <div class="flex items-center gap-2 mb-1">
                                 <h3 class="text-lg font-bold text-gray-900 tracking-tight">Healthcare</h3>
@@ -473,12 +484,12 @@ background-color: #10B981;
                         </div>
 
                         <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                            <label class="relative inline-flex items-center cursor-pointer">
+                            <label onclick="event.stopPropagation()" class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" checked="">
                                 <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
                                 <span class="ml-2 text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">Active</span>
                             </label>
-                            <div class="flex gap-1">
+                            <div class="flex gap-1" onclick="event.stopPropagation()">
                                 <button class="p-1.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded transition-colors">
                                     <span class="iconify" data-icon="lucide:pencil" data-width="16"></span>
                                 </button>
@@ -491,18 +502,18 @@ background-color: #10B981;
                 </div>
 
                 <!-- 7. Travel -->
-                <div class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <div onclick="window.location.href='./17a-category-detail.html?cat=travel'" class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden cursor-pointer">
                     <div class="absolute top-0 inset-x-0 h-1 bg-cyan-500"></div>
                     <div class="p-5">
                         <div class="flex items-start justify-between mb-4">
                             <div class="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center border border-cyan-100">
                                 <span class="iconify" data-icon="lucide:plane" data-width="24"></span>
                             </div>
-                            <button class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
+                            <button onclick="event.stopPropagation()" class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
                                 <span class="iconify" data-icon="lucide:more-vertical" data-width="20"></span>
                             </button>
                         </div>
-                        
+
                         <div class="mb-4">
                             <div class="flex items-center gap-2 mb-1">
                                 <h3 class="text-lg font-bold text-gray-900 tracking-tight">Travel</h3>
@@ -512,12 +523,12 @@ background-color: #10B981;
                         </div>
 
                         <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                            <label class="relative inline-flex items-center cursor-pointer">
+                            <label onclick="event.stopPropagation()" class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" checked="">
                                 <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
                                 <span class="ml-2 text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">Active</span>
                             </label>
-                            <div class="flex gap-1">
+                            <div class="flex gap-1" onclick="event.stopPropagation()">
                                 <button class="p-1.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded transition-colors">
                                     <span class="iconify" data-icon="lucide:pencil" data-width="16"></span>
                                 </button>
@@ -530,18 +541,18 @@ background-color: #10B981;
                 </div>
 
                 <!-- 8. Education -->
-                <div class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <div onclick="window.location.href='./17a-category-detail.html?cat=education'" class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden cursor-pointer">
                     <div class="absolute top-0 inset-x-0 h-1 bg-indigo-500"></div>
                     <div class="p-5">
                         <div class="flex items-start justify-between mb-4">
                             <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center border border-indigo-100">
                                 <span class="iconify" data-icon="lucide:graduation-cap" data-width="24"></span>
                             </div>
-                            <button class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
+                            <button onclick="event.stopPropagation()" class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
                                 <span class="iconify" data-icon="lucide:more-vertical" data-width="20"></span>
                             </button>
                         </div>
-                        
+
                         <div class="mb-4">
                             <div class="flex items-center gap-2 mb-1">
                                 <h3 class="text-lg font-bold text-gray-900 tracking-tight">Education</h3>
@@ -551,12 +562,12 @@ background-color: #10B981;
                         </div>
 
                         <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                            <label class="relative inline-flex items-center cursor-pointer">
+                            <label onclick="event.stopPropagation()" class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" checked="">
                                 <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
                                 <span class="ml-2 text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">Active</span>
                             </label>
-                            <div class="flex gap-1">
+                            <div class="flex gap-1" onclick="event.stopPropagation()">
                                 <button class="p-1.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded transition-colors">
                                     <span class="iconify" data-icon="lucide:pencil" data-width="16"></span>
                                 </button>
@@ -569,18 +580,18 @@ background-color: #10B981;
                 </div>
 
                 <!-- 9. Investments -->
-                <div class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <div onclick="window.location.href='./17a-category-detail.html?cat=investments'" class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden cursor-pointer">
                     <div class="absolute top-0 inset-x-0 h-1 bg-emerald-500"></div>
                     <div class="p-5">
                         <div class="flex items-start justify-between mb-4">
                             <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
                                 <span class="iconify" data-icon="lucide:trending-up" data-width="24"></span>
                             </div>
-                            <button class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
+                            <button onclick="event.stopPropagation()" class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
                                 <span class="iconify" data-icon="lucide:more-vertical" data-width="20"></span>
                             </button>
                         </div>
-                        
+
                         <div class="mb-4">
                             <div class="flex items-center gap-2 mb-1">
                                 <h3 class="text-lg font-bold text-gray-900 tracking-tight">Investments</h3>
@@ -590,12 +601,12 @@ background-color: #10B981;
                         </div>
 
                         <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                            <label class="relative inline-flex items-center cursor-pointer">
+                            <label onclick="event.stopPropagation()" class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" checked="">
                                 <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
                                 <span class="ml-2 text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">Active</span>
                             </label>
-                            <div class="flex gap-1">
+                            <div class="flex gap-1" onclick="event.stopPropagation()">
                                 <button class="p-1.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded transition-colors">
                                     <span class="iconify" data-icon="lucide:pencil" data-width="16"></span>
                                 </button>
@@ -608,18 +619,18 @@ background-color: #10B981;
                 </div>
 
                 <!-- 10. Other -->
-                <div class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <div onclick="window.location.href='./17a-category-detail.html?cat=other'" class="group bg-white rounded-card border border-gray-200 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden cursor-pointer">
                     <div class="absolute top-0 inset-x-0 h-1 bg-gray-400"></div>
                     <div class="p-5">
                         <div class="flex items-start justify-between mb-4">
                             <div class="w-12 h-12 rounded-xl bg-gray-100 text-gray-600 flex items-center justify-center border border-gray-200">
                                 <span class="iconify" data-icon="lucide:more-horizontal" data-width="24"></span>
                             </div>
-                            <button class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
+                            <button onclick="event.stopPropagation()" class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-50 transition-colors">
                                 <span class="iconify" data-icon="lucide:more-vertical" data-width="20"></span>
                             </button>
                         </div>
-                        
+
                         <div class="mb-4">
                             <div class="flex items-center gap-2 mb-1">
                                 <h3 class="text-lg font-bold text-gray-900 tracking-tight">Other</h3>
@@ -629,12 +640,12 @@ background-color: #10B981;
                         </div>
 
                         <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                            <label class="relative inline-flex items-center cursor-pointer">
+                            <label onclick="event.stopPropagation()" class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" checked="">
                                 <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
                                 <span class="ml-2 text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">Active</span>
                             </label>
-                            <div class="flex gap-1">
+                            <div class="flex gap-1" onclick="event.stopPropagation()">
                                 <button class="p-1.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded transition-colors">
                                     <span class="iconify" data-icon="lucide:pencil" data-width="16"></span>
                                 </button>
@@ -653,9 +664,182 @@ background-color: #10B981;
         </div>
     </main>
 
+    <!-- Drawer Overlay -->
+    <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-gray-900/40 z-[60] hidden backdrop-blur-[2px] transition-opacity"></div>
+
+    <!-- Add Category Drawer -->
+    <div id="addCategoryDrawer" class="fixed inset-y-0 right-0 z-[70] w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <!-- Drawer Header -->
+        <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100 bg-white/80 backdrop-blur-sm sticky top-0">
+            <div>
+                <h2 class="text-lg font-bold text-gray-900 tracking-tight">New Category</h2>
+                <p class="text-sm text-gray-500">Create a new transaction category.</p>
+            </div>
+            <button onclick="toggleDrawer()" class="p-2 -mr-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-btn transition-colors">
+                <span class="iconify" data-icon="lucide:x" data-width="20"></span>
+            </button>
+        </div>
+
+        <!-- Drawer Content -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-6">
+            <!-- Name -->
+            <div class="space-y-2">
+                <label class="text-sm font-medium text-gray-700">Category Name</label>
+                <input type="text" placeholder="e.g., Groceries" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all placeholder:text-gray-400">
+            </div>
+
+            <!-- Type -->
+            <div class="space-y-2">
+                <label class="text-sm font-medium text-gray-700">Type</label>
+                <div class="grid grid-cols-2 gap-2 p-1 bg-gray-100 rounded-lg">
+                    <label class="cursor-pointer">
+                        <input type="radio" name="type" class="peer sr-only" checked="">
+                        <div class="text-center py-1.5 text-sm font-medium text-gray-500 rounded-md peer-checked:bg-white peer-checked:text-emerald-600 peer-checked:shadow-sm transition-all">Expense</div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="type" class="peer sr-only">
+                        <div class="text-center py-1.5 text-sm font-medium text-gray-500 rounded-md peer-checked:bg-white peer-checked:text-emerald-600 peer-checked:shadow-sm transition-all">Income</div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Color Theme -->
+            <div class="space-y-2">
+                <label class="text-sm font-medium text-gray-700">Color Theme</label>
+                <div class="flex flex-wrap gap-3">
+                    <label class="cursor-pointer relative">
+                        <input type="radio" name="color" class="sr-only color-radio text-orange-500" checked="">
+                        <div class="w-6 h-6 rounded-full bg-orange-500 transition-transform"></div>
+                    </label>
+                    <label class="cursor-pointer relative">
+                        <input type="radio" name="color" class="sr-only color-radio text-purple-500">
+                        <div class="w-6 h-6 rounded-full bg-purple-500 transition-transform"></div>
+                    </label>
+                    <label class="cursor-pointer relative">
+                        <input type="radio" name="color" class="sr-only color-radio text-blue-500">
+                        <div class="w-6 h-6 rounded-full bg-blue-500 transition-transform"></div>
+                    </label>
+                    <label class="cursor-pointer relative">
+                        <input type="radio" name="color" class="sr-only color-radio text-red-500">
+                        <div class="w-6 h-6 rounded-full bg-red-500 transition-transform"></div>
+                    </label>
+                    <label class="cursor-pointer relative">
+                        <input type="radio" name="color" class="sr-only color-radio text-emerald-500">
+                        <div class="w-6 h-6 rounded-full bg-emerald-500 transition-transform"></div>
+                    </label>
+                    <label class="cursor-pointer relative">
+                        <input type="radio" name="color" class="sr-only color-radio text-cyan-500">
+                        <div class="w-6 h-6 rounded-full bg-cyan-500 transition-transform"></div>
+                    </label>
+                    <label class="cursor-pointer relative">
+                        <input type="radio" name="color" class="sr-only color-radio text-indigo-500">
+                        <div class="w-6 h-6 rounded-full bg-indigo-500 transition-transform"></div>
+                    </label>
+                    <label class="cursor-pointer relative">
+                        <input type="radio" name="color" class="sr-only color-radio text-pink-500">
+                        <div class="w-6 h-6 rounded-full bg-pink-500 transition-transform"></div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Icon -->
+            <div class="space-y-2">
+                <label class="text-sm font-medium text-gray-700">Icon</label>
+                <div class="grid grid-cols-5 gap-3">
+                    <label class="cursor-pointer">
+                        <input type="radio" name="icon" class="icon-radio sr-only" checked="">
+                        <div class="aspect-square rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:border-emerald-200 hover:bg-emerald-50 transition-colors">
+                            <span class="iconify" data-icon="lucide:utensils" data-width="20"></span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="icon" class="icon-radio sr-only">
+                        <div class="aspect-square rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:border-emerald-200 hover:bg-emerald-50 transition-colors">
+                            <span class="iconify" data-icon="lucide:shopping-bag" data-width="20"></span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="icon" class="icon-radio sr-only">
+                        <div class="aspect-square rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:border-emerald-200 hover:bg-emerald-50 transition-colors">
+                            <span class="iconify" data-icon="lucide:car-front" data-width="20"></span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="icon" class="icon-radio sr-only">
+                        <div class="aspect-square rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:border-emerald-200 hover:bg-emerald-50 transition-colors">
+                            <span class="iconify" data-icon="lucide:receipt" data-width="20"></span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="icon" class="icon-radio sr-only">
+                        <div class="aspect-square rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:border-emerald-200 hover:bg-emerald-50 transition-colors">
+                            <span class="iconify" data-icon="lucide:tv" data-width="20"></span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="icon" class="icon-radio sr-only">
+                        <div class="aspect-square rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:border-emerald-200 hover:bg-emerald-50 transition-colors">
+                            <span class="iconify" data-icon="lucide:heart-pulse" data-width="20"></span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="icon" class="icon-radio sr-only">
+                        <div class="aspect-square rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:border-emerald-200 hover:bg-emerald-50 transition-colors">
+                            <span class="iconify" data-icon="lucide:plane" data-width="20"></span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="icon" class="icon-radio sr-only">
+                        <div class="aspect-square rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:border-emerald-200 hover:bg-emerald-50 transition-colors">
+                            <span class="iconify" data-icon="lucide:graduation-cap" data-width="20"></span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="icon" class="icon-radio sr-only">
+                        <div class="aspect-square rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:border-emerald-200 hover:bg-emerald-50 transition-colors">
+                            <span class="iconify" data-icon="lucide:trending-up" data-width="20"></span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="icon" class="icon-radio sr-only">
+                        <div class="aspect-square rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:border-emerald-200 hover:bg-emerald-50 transition-colors">
+                            <span class="iconify" data-icon="lucide:smile" data-width="20"></span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="space-y-2">
+                <label class="text-sm font-medium text-gray-700">Description <span class="text-gray-400 font-normal">(Optional)</span></label>
+                <textarea rows="3" placeholder="Brief description of this category..." class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all placeholder:text-gray-400 resize-none"></textarea>
+            </div>
+
+            <!-- Status -->
+            <div class="flex items-center justify-between pt-2">
+                <div>
+                    <p class="text-sm font-medium text-gray-700">Active Status</p>
+                    <p class="text-xs text-gray-500">Enable this category for new transactions.</p>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" value="" class="sr-only peer" checked="">
+                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+                </label>
+            </div>
+        </div>
+
+        <!-- Drawer Footer -->
+        <div class="px-6 py-4 border-t border-gray-100 bg-gray-50 flex items-center justify-end gap-3">
+            <button onclick="toggleDrawer()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 hover:text-gray-900 transition-colors shadow-sm">Cancel</button>
+            <button onclick="toggleDrawer()" class="px-4 py-2 text-sm font-medium text-white bg-emerald-600 rounded-lg hover:bg-emerald-700 shadow-sm shadow-emerald-200 transition-all">Create Category</button>
+        </div>
+    </div>
+
     <script>
         const sidebar = document.getElementById('sidebar');
         const mobileOverlay = document.getElementById('mobileOverlay');
+        const drawer = document.getElementById('addCategoryDrawer');
+        const drawerOverlay = document.getElementById('drawerOverlay');
 
         function toggleSidebar() {
             const isClosed = sidebar.classList.contains('-translate-x-full');
@@ -668,9 +852,23 @@ background-color: #10B981;
             }
         }
 
+        function toggleDrawer() {
+            const isClosed = drawer.classList.contains('translate-x-full');
+            if (isClosed) {
+                drawer.classList.remove('translate-x-full');
+                drawerOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                drawer.classList.add('translate-x-full');
+                drawerOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
                 if(!sidebar.classList.contains('-translate-x-full')) toggleSidebar();
+                if(!drawer.classList.contains('translate-x-full')) toggleDrawer();
             }
         });
     </script>

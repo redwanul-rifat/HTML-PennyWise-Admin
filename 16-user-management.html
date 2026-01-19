@@ -207,7 +207,7 @@ transform: scale(1);
                         <span class="iconify" data-icon="lucide:download" data-width="16"></span>
                         Export Users
                     </button>
-                    <button class="flex items-center gap-2 px-4 py-2.5 bg-emerald-600 text-white rounded-btn hover:bg-emerald-700 font-medium text-sm transition-all shadow-sm shadow-emerald-200">
+                    <button onclick="openInviteUserModal()" class="flex items-center gap-2 px-4 py-2.5 bg-emerald-600 text-white rounded-btn hover:bg-emerald-700 font-medium text-sm transition-all shadow-sm shadow-emerald-200">
                         <span class="iconify" data-icon="lucide:plus" data-width="16"></span>
                         Invite User
                     </button>
@@ -593,8 +593,241 @@ transform: scale(1);
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
                 if(!sidebar.classList.contains('-translate-x-full')) toggleSidebar();
+                if(!inviteUserModal.classList.contains('hidden')) closeInviteUserModal();
             }
         });
+
+        // Invite User Modal Functions
+        const inviteUserModal = document.getElementById('inviteUserModal');
+        const inviteFormState = document.getElementById('inviteFormState');
+        const inviteSuccessState = document.getElementById('inviteSuccessState');
+
+        function openInviteUserModal() {
+            inviteUserModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            // Focus on email field
+            setTimeout(() => {
+                document.getElementById('inviteEmail').focus();
+            }, 100);
+        }
+
+        function closeInviteUserModal() {
+            inviteUserModal.classList.add('hidden');
+            document.body.style.overflow = '';
+            // Reset form after close animation
+            setTimeout(() => {
+                resetInviteForm();
+            }, 200);
+        }
+
+        function resetInviteForm() {
+            document.getElementById('inviteEmail').value = '';
+            document.getElementById('inviteName').value = '';
+            document.getElementById('inviteRole').value = 'user';
+            document.getElementById('inviteMessage').value = '';
+            document.getElementById('sendCopy').checked = false;
+            inviteFormState.classList.remove('hidden');
+            inviteSuccessState.classList.add('hidden');
+        }
+
+        function sendInvitation() {
+            const email = document.getElementById('inviteEmail').value.trim();
+            const role = document.getElementById('inviteRole');
+            const roleText = role.options[role.selectedIndex].text;
+
+            // Basic validation
+            if (!email) {
+                document.getElementById('inviteEmail').focus();
+                document.getElementById('inviteEmail').classList.add('border-danger', 'ring-2', 'ring-danger/20');
+                setTimeout(() => {
+                    document.getElementById('inviteEmail').classList.remove('border-danger', 'ring-2', 'ring-danger/20');
+                }, 2000);
+                return;
+            }
+
+            // Email format validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('inviteEmail').focus();
+                document.getElementById('inviteEmail').classList.add('border-danger', 'ring-2', 'ring-danger/20');
+                setTimeout(() => {
+                    document.getElementById('inviteEmail').classList.remove('border-danger', 'ring-2', 'ring-danger/20');
+                }, 2000);
+                return;
+            }
+
+            // Update success state with details
+            document.getElementById('successEmail').textContent = email;
+            document.getElementById('successRole').textContent = roleText;
+
+            // Switch to success state
+            inviteFormState.classList.add('hidden');
+            inviteSuccessState.classList.remove('hidden');
+        }
+
+        function inviteAnother() {
+            resetInviteForm();
+            setTimeout(() => {
+                document.getElementById('inviteEmail').focus();
+            }, 100);
+        }
     </script>
+
+    <!-- Invite User Modal -->
+    <div id="inviteUserModal" class="fixed inset-0 z-[100] hidden">
+        <!-- Backdrop -->
+        <div onclick="closeInviteUserModal()" class="absolute inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity"></div>
+
+        <!-- Modal Content -->
+        <div class="relative flex items-center justify-center min-h-screen p-4">
+            <div id="inviteModalContent" class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md transform transition-all">
+
+                <!-- Form State -->
+                <div id="inviteFormState">
+                    <!-- Modal Header -->
+                    <div class="px-6 py-5 border-b border-gray-100">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center border border-emerald-100">
+                                    <span class="iconify text-emerald-600" data-icon="lucide:user-plus" data-width="20"></span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Invite New User</h3>
+                                    <p class="text-sm text-gray-500">Send an invitation to join PennyWise</p>
+                                </div>
+                            </div>
+                            <button onclick="closeInviteUserModal()" class="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                                <span class="iconify" data-icon="lucide:x" data-width="20"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="p-6 space-y-5">
+                        <!-- Email Field -->
+                        <div class="space-y-1.5">
+                            <label for="inviteEmail" class="block text-sm font-medium text-gray-700">Email Address <span class="text-danger">*</span></label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="iconify text-gray-400" data-icon="lucide:mail" data-width="18"></span>
+                                </div>
+                                <input type="email" id="inviteEmail" placeholder="user@example.com" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all placeholder-gray-400">
+                            </div>
+                        </div>
+
+                        <!-- Full Name Field -->
+                        <div class="space-y-1.5">
+                            <label for="inviteName" class="block text-sm font-medium text-gray-700">Full Name</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="iconify text-gray-400" data-icon="lucide:user" data-width="18"></span>
+                                </div>
+                                <input type="text" id="inviteName" placeholder="John Doe" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all placeholder-gray-400">
+                            </div>
+                        </div>
+
+                        <!-- Role Selection -->
+                        <div class="space-y-1.5">
+                            <label for="inviteRole" class="block text-sm font-medium text-gray-700">User Role <span class="text-danger">*</span></label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="iconify text-gray-400" data-icon="lucide:shield" data-width="18"></span>
+                                </div>
+                                <select id="inviteRole" class="form-select w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-gray-200 text-gray-700 text-sm rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none">
+                                    <option value="user" selected>Standard User</option>
+                                    <option value="premium">Premium User</option>
+                                    <option value="moderator">Moderator</option>
+                                    <option value="admin">Administrator</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Custom Message -->
+                        <div class="space-y-1.5">
+                            <label for="inviteMessage" class="block text-sm font-medium text-gray-700">Personal Message <span class="text-gray-400 font-normal">(optional)</span></label>
+                            <textarea id="inviteMessage" rows="3" placeholder="Add a personal note to the invitation email..." class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all placeholder-gray-400 resize-none"></textarea>
+                        </div>
+
+                        <!-- Send Copy Checkbox -->
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="sendCopy" class="form-checkbox text-emerald-600 rounded focus:ring-emerald-500 border-gray-300">
+                            <span class="text-sm text-gray-600">Send me a copy of this invitation</span>
+                        </label>
+                    </div>
+
+                    <!-- Modal Footer -->
+                    <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 rounded-b-2xl flex items-center justify-between">
+                        <button onclick="closeInviteUserModal()" class="px-4 py-2.5 text-gray-700 text-sm font-medium hover:bg-gray-100 rounded-lg transition-colors">
+                            Cancel
+                        </button>
+                        <button onclick="sendInvitation()" class="flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 font-medium text-sm transition-all shadow-sm shadow-emerald-200">
+                            <span class="iconify" data-icon="lucide:send" data-width="16"></span>
+                            Send Invitation
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Success State -->
+                <div id="inviteSuccessState" class="hidden">
+                    <div class="p-8 text-center">
+                        <!-- Success Animation -->
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-emerald-50 flex items-center justify-center border-4 border-emerald-100 animate-bounce-once">
+                            <span class="iconify text-emerald-600" data-icon="lucide:check-circle" data-width="40"></span>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Invitation Sent!</h3>
+                        <p class="text-gray-500 text-sm mb-6">
+                            We've sent an invitation to<br>
+                            <span id="successEmail" class="font-medium text-gray-900">user@example.com</span>
+                        </p>
+
+                        <!-- Invitation Details -->
+                        <div class="bg-gray-50 rounded-xl p-4 text-left mb-6 border border-gray-100">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center border border-gray-200">
+                                    <span class="iconify text-gray-500" data-icon="lucide:mail-check" data-width="16"></span>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">Invitation expires in</p>
+                                    <p class="text-sm font-medium text-gray-900">7 days</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center border border-gray-200">
+                                    <span class="iconify text-gray-500" data-icon="lucide:shield" data-width="16"></span>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">Assigned role</p>
+                                    <p id="successRole" class="text-sm font-medium text-gray-900">Standard User</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex items-center gap-3">
+                            <button onclick="inviteAnother()" class="flex-1 px-4 py-2.5 bg-white border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 font-medium text-sm transition-colors">
+                                <span class="iconify inline-block mr-1" data-icon="lucide:user-plus" data-width="16"></span>
+                                Invite Another
+                            </button>
+                            <button onclick="closeInviteUserModal()" class="flex-1 px-4 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 font-medium text-sm transition-all shadow-sm shadow-emerald-200">
+                                Done
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes bounce-once {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .animate-bounce-once {
+            animation: bounce-once 0.5s ease-out;
+        }
+    </style>
 
 </body></html>
